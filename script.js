@@ -1,6 +1,7 @@
 'use strict';
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let highScore=0
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -19,10 +20,10 @@ document.querySelector('.check').addEventListener('click', function () {
 
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
-        const scoreString=document.querySelector('.score').textContent;
-        const score=parseInt(scoreString);
-        const newScore=20-score;
-        document.querySelector('.highscore').textContent=newScore;
+       if(score>highScore){
+        highScore=score;
+        document.querySelector('.highscore').innerText=highScore;
+       }
         
 
 
