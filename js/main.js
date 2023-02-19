@@ -41,7 +41,9 @@ document.getElementById('btn-check').addEventListener('click', function () {
 
 document.getElementById('btn-again').addEventListener('click', function () {
   score = 20;
+  // regenerate number
   secretNumber = Math.trunc(Math.random() * 20) + 1;
+  // design reset
   const theScore = htmlElementByID('score');
   theScore.innerText = score;
   const theNumber = htmlElementByID('number');
