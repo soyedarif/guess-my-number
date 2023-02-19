@@ -13,6 +13,9 @@ document.getElementById('btn-check').addEventListener('click', function () {
   const message = htmlElementByID('message');
   const scoreBoard = htmlElementByID('score');
   const theNumber = htmlElementByID('number');
+  const hightScoreElement=htmlElementByID('highscore');
+   const highscore=parseInt(hightScoreElement.innerText);
+  
   if (!guess || isNaN(guess)) {
     message.innerText = '⛔ Try Number Between 1-20';
     // when the player guesses right
@@ -21,6 +24,9 @@ document.getElementById('btn-check').addEventListener('click', function () {
     message.innerText = '🎉 Bravo You did it...!';
     document.body.style.backgroundColor = '#60b347';
     theNumber.style.width = '30rem';
+    if(score>highscore){
+      hightScoreElement.innerText=score;
+    }
     //when the player guesses wrong
   }else if(guess!==secretNumber){
     if (score > 1) {
