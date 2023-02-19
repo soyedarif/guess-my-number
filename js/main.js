@@ -7,20 +7,22 @@ function getElementInnerValue(elementid) {
 function htmlElementByID(elementid) {
   return document.getElementById(elementid);
 }
+function displayMessage(message){
+  document.getElementById('message').innerText=message;
+}
 
 document.getElementById('btn-check').addEventListener('click', function () {
   const guess = getElementInnerValue('guess');
-  const message = htmlElementByID('message');
   const scoreBoard = htmlElementByID('score');
   const theNumber = htmlElementByID('number');
   const hightScoreElement=htmlElementByID('highscore');
    const highscore=parseInt(hightScoreElement.innerText);  
   if (!guess || isNaN(guess)) {
-    message.innerText = '⛔ Try Number Between 1-20';
+     displayMessage( '⛔ Try Number Between 1-20');
     // when the player guesses right
   } else if (guess === secretNumber) {
     theNumber.innerText = secretNumber;
-    message.innerText = '🎉 Bravo You did it...!';
+     displayMessage( '🎉 Bravo You did it...!');
     document.body.style.backgroundColor = '#60b347';
     theNumber.style.width = '30rem';
     if(score>highscore){
@@ -29,11 +31,11 @@ document.getElementById('btn-check').addEventListener('click', function () {
     //when the player guesses wrong
   }else if(guess!==secretNumber){
     if (score > 1) {
-      message.innerText = guess>secretNumber?'📈 Too High Try Again...!':'📉 Too Low Try Again...!';
+       displayMessage( guess>secretNumber?'📈 Too High Try Again...!':'📉 Too Low Try Again...!');
       score--;
       scoreBoard.innerText = score;
     } else {
-      message.innerText = '💥 You lost the Game';
+       displayMessage( '💥 You lost the Game');
       scoreBoard.innerText = 0;
   }}
 });
@@ -49,8 +51,7 @@ document.getElementById('btn-again').addEventListener('click', function () {
   theNumber.innerText = '?';
   const guess = htmlElementByID('guess');
   guess.value = '';
-  const message = htmlElementByID('message');
-  message.innerText = 'Start guessing...';
+   displayMessage( 'Start guessing...');
   document.body.style.backgroundColor = '#222';
   theNumber.style.width = '15rem';
 });
