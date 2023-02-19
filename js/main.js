@@ -14,8 +14,7 @@ document.getElementById('btn-check').addEventListener('click', function () {
   const scoreBoard = htmlElementByID('score');
   const theNumber = htmlElementByID('number');
   const hightScoreElement=htmlElementByID('highscore');
-   const highscore=parseInt(hightScoreElement.innerText);
-  
+   const highscore=parseInt(hightScoreElement.innerText);  
   if (!guess || isNaN(guess)) {
     message.innerText = '⛔ Try Number Between 1-20';
     // when the player guesses right
