@@ -9,7 +9,6 @@ function getIdElement(elementid) {
 }
 
 document.getElementById('btn-check').addEventListener('click', function () {
-  score--;
   const theScore = getIdElement('score');
   theScore.innerText = score;
   const theNumber = getIdElement('number');
@@ -18,22 +17,30 @@ document.getElementById('btn-check').addEventListener('click', function () {
   const highScoreElement = getIdElement('highscore');
   const highScore = parseInt(highScoreElement.innerText);
   if (!guess || isNaN(guess)) {
-    message.innerText = 'No Number guessed...!!!';
+    message.innerText = '⛔ No Number guessed...!!!';
   } else if (guess > secretNumber) {
     if (guess > 20) {
-      alert('Try Number Between 1-20');
+      alert('⛔ Try Number Between 1-20');
     } else {
-      message.innerText = 'Too High Try Again...!';
+        message.innerText = '📈 Too High Try Again...!';
+      if (score > 1) {
+          score--;
+      } else {message.innerText = '💥 You lost the Game!'};
     }
   } else if (guess < secretNumber) {
     if (guess < 0) {
       alert("You can't guess negetive Number");
     } else {
-      message.innerText = 'Too Low Try Again...!';
+        message.innerText = '📉 Too Low Try Again...!';
+        if (score > 1) {
+            score--;
+      } else {
+        message.innerText = '💥 You lost the Game!';
+      }
     }
   } else if (guess == secretNumber) {
     theNumber.innerText = secretNumber;
-    message.innerText = 'Bravo You did it...!';
+    message.innerText = '🎉 Bravo You did it...!';
     document.body.style.backgroundColor = '#60b347';
     theNumber.style.width = '30rem';
     if (score > highScore) {
